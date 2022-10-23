@@ -30,6 +30,7 @@ export const savePlace = (title, image, address) => {
     // const fileName = image.split("/").pop();
     // const path = FileSystem.documentDirectory + fileName;
     try {
+      // usar cuando funcione con expo//////////////////////////////////////////////////////////
       // await FileSystem.moveAsync({
       //   from: image,
       //   to: path,

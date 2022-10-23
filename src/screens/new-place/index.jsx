@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
 
-import { ImageSelector, LocationSelector } from "../../components";
+import { ImageSelector,LocationSelector } from "../../components";
 import { savePlace } from "../../store/place.slice";
 import colors from "../../utils/colors";
 import { styles } from "./styles";

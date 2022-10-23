@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { View, Text, Button, Alert } from "react-native";
 
 import colors from "../../utils/colors";
-import MapPreview from "../map-preview";
+// import MapPreview from "../map-preview";
 import { styles } from "./styles";
 
 const LocationSelector = ({ onLocation }) => {
@@ -20,12 +20,14 @@ const LocationSelector = ({ onLocation }) => {
   };
 
   const onHandlerLocation = async () => {
-    const hasPermission = await verifyPermissions();
-    if (!hasPermission) return;
+    const hasPermission = await verifyPermissions()
+    ;
+    if (!hasPermission)  return ;
 
     const location = await Location.getCurrentPositionAsync({
       timeout: 5000,
     });
+    console.log(location)
 
     setPickedLocation({
       lat: location.coords.latitude,
@@ -39,12 +41,21 @@ const LocationSelector = ({ onLocation }) => {
 
   return (
     <View style={styles.container}>
-      <MapPreview location={pickedLocation} style={styles.preview}>
+      <View style={styles.preview}>
+      {!pickedLocation ? (
         <Text>No location select yet.</Text>
-      </MapPreview>
+      ) : (
+        <Text>{`lat :${pickedLocation.lat},lng: ${pickedLocation.lng}`}</Text>
+      )}
+      </View>
+      
       <Button title="Get Location" color={colors.secondary} onPress={onHandlerLocation} />
     </View>
   );
 };
 
 export default LocationSelector;
+
+{/* <MapPreview location={pickedLocation} style={styles.preview}>
+        
+      </MapPreview> */}
