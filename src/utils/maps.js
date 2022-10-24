@@ -1,9 +1,9 @@
-export const API_KEY = "AIzaSyABNqd4qY4ZSufNr8NpuXgFRygauHDVRT0";
+export const API_KEY = "AIzaSyBeD6iy096nR6uJGeIm_EFeRxwBJM9917I";
 
 export const URL_MAPS = (
   lat,
   lng,
-  zoom = 14
+  zoom = 12
 ) => `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=600x300&maptype=roadmap
   &markers=color:blue%7Clabel:S%7C${lat},${lng}&key=${API_KEY}`;
 
