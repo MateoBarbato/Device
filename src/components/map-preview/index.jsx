@@ -6,7 +6,6 @@ import { styles } from "./styles";
 
 const MapPreview = ({ children, location, style }) => {
   const { lat, lng } = location || {};
-
   const mapPreviewUrl = URL_MAPS(lat, lng);
   return (
     <View style={{ ...styles.container, ...style }}>

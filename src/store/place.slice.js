@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import * as FileSystem from "expo-file-system";
+// import * as FileSystem from "expo-file-system";
 
 import Place from "../model/Place";
 import { URL_GEOCODING } from "../utils/maps";
