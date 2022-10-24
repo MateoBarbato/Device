@@ -22,12 +22,9 @@ const LocationSelector = ({ onLocation }) => {
   const onHandlerLocation = async () => {
     const hasPermission = await verifyPermissions();
     if (!hasPermission) return;
-    
-    console.log(1)
 
     const location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
-    console.log(1)
-    console.log(location)
+    
     setPickedLocation({
       lat: location.coords.latitude,
       lng: location.coords.longitude,
