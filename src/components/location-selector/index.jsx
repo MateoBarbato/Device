@@ -1,12 +1,13 @@
 import * as Location from "expo-location";
 import React, { useState } from "react";
 import { View, Text, Button, Alert } from "react-native";
-
+import { useNavigation } from "@react-navigation/native";
 import colors from "../../utils/colors";
 import MapPreview from "../map-preview";
 import { styles } from "./styles";
 
 const LocationSelector = ({ onLocation }) => {
+  const navigation = useNavigation()
   const [pickedLocation, setPickedLocation] = useState(null);
 
   const verifyPermissions = async () => {
@@ -18,6 +19,14 @@ const LocationSelector = ({ onLocation }) => {
     }
     return true;
   };
+
+  const onHandlerPickMap = () => {
+    const hasPermission = verifyPermissions();
+    if(!hasPermission) return ;
+    
+    navigation.navigate('Maps')
+
+  }
 
   const onHandlerLocation = async () => {
     const hasPermission = await verifyPermissions();
@@ -40,6 +49,7 @@ const LocationSelector = ({ onLocation }) => {
         <Text>No location select yet.</Text>
       </MapPreview>
       <Button title="Get Location" color={colors.secondary} onPress={onHandlerLocation} />
+      <Button title="Set Location" color={colors.secondary} onPress={onHandlerPickMap} />
     </View>
   );
 };

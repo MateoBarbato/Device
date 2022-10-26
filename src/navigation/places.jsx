@@ -43,7 +43,11 @@ const PlacesNavigator = () => {
         component={NewPlaceScreen}
         options={{ title: "Nueva dirección" }}
       />
-      <Stack.Screen name="Maps" component={MapsScreen} options={{ title: "Mapa" }} />
+      <Stack.Screen 
+        name="Maps" 
+        component={MapsScreen} 
+        options={{ title: "Mapa" }} />
+
     </Stack.Navigator>
   );
 };
