@@ -1,14 +1,17 @@
 import * as Location from "expo-location";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Button, Alert } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation , useRoute } from "@react-navigation/native";
 import colors from "../../utils/colors";
 import MapPreview from "../map-preview";
 import { styles } from "./styles";
 
 const LocationSelector = ({ onLocation }) => {
   const navigation = useNavigation()
+  const route = useRoute();
   const [pickedLocation, setPickedLocation] = useState(null);
+  const {mapLocation} = route.params || {}
+
 
   const verifyPermissions = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync();
@@ -20,13 +23,6 @@ const LocationSelector = ({ onLocation }) => {
     return true;
   };
 
-  const onHandlerPickMap = () => {
-    const hasPermission = verifyPermissions();
-    if(!hasPermission) return ;
-    
-    navigation.navigate('Maps')
-
-  }
 
   const onHandlerLocation = async () => {
     const hasPermission = await verifyPermissions();
@@ -42,6 +38,20 @@ const LocationSelector = ({ onLocation }) => {
       lng: location.coords.longitude,
     });
   };
+
+  
+  const onHandlerPickMap = () => {
+    const hasPermission = verifyPermissions();
+    if(!hasPermission) return ;
+    
+    navigation.navigate('Maps')
+
+  }
+
+  useEffect(()=> {
+    setPickedLocation(mapLocation);
+    onLocation(mapLocation)
+  },[mapLocation])
 
   return (
     <View style={styles.container}>
