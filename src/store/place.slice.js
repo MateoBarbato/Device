@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPlaces, insertPlace } from "../db";
-// import * as FileSystem from "expo-file-system";
+import * as FileSystem from "expo-file-system";
 
+import { getPlaces, insertPlace } from "../db";
 import Place from "../model/Place";
 import { URL_GEOCODING } from "../utils/maps";
 
@@ -15,7 +15,6 @@ const placeSlice = createSlice({
   reducers: {
     addPlace: (state, action) => {
       const newPlace = new Place(
-        Date.now(),
         action.payload.id,
         action.payload.title,
         action.payload.image,
@@ -24,9 +23,9 @@ const placeSlice = createSlice({
       );
       state.places.push(newPlace);
     },
-    setPlaces:(state,action) => {
+    setPlaces: (state, action) => {
       state.places = action.payload;
-    }
+    },
   },
 });
 
@@ -36,17 +35,22 @@ export const savePlace = (title, image, coords) => {
   return async (dispatch) => {
     const response = await fetch(URL_GEOCODING(coords?.lat, coords?.lng));
 
-    if(!response.ok) throw new Error('Error en el URL_GEOCODING')
+    if (!response.ok) throw new Error("Something went wrong!");
 
-    const data = await response.json()
+    const data = await response.json();
 
-    if(!data.results) throw new Error('Direccion no encontrada, invalido. Check coords')
+    if (!data.results) throw new Error("Something went wrong!");
 
     const address = data.results[0].formatted_address;
+    // const fileName = image.split("/").pop();
+    // const path = FileSystem.documentDirectory + fileName;
     try {
-      const result = await insertPlace(title,image,address,coords)
-
-      dispatch(addPlace({id:result.insertId,title:title, image:image, address:address, coords:coords}));
+      // await FileSystem.moveAsync({
+      //   from: image,
+      //   to: path,
+      // });
+      const result = await insertPlace(title, image, address, coords);
+      dispatch(addPlace({ id: result.insertId, title, image, address, coords }));
     } catch (err) {
       console.log(err);
       throw err;
@@ -55,15 +59,14 @@ export const savePlace = (title, image, coords) => {
 };
 
 export const loadPlaces = () => {
-  return async (dispatch ) => {
-    try { 
+  return async (dispatch) => {
+    try {
       const result = await getPlaces();
-      dispatch(setPlaces(result?.rows?._array))
+      dispatch(setPlaces(result?.rows?._array));
+    } catch (err) {
+      throw err;
     }
-    catch(err){
-      throw err
-    }
-  }
-}
+  };
+};
 
 export default placeSlice.reducer;
