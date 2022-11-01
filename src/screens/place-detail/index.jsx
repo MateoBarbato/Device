@@ -5,12 +5,11 @@ import { MapPreview } from "../../components";
 import { styles } from "./styles";
 
 const PlaceDetail = ({ navigation, route }) => {
-  const { placeId } = route.params;
-  const place = useSelector((state) =>
-    state.place.places.find((placeItem) => placeItem.id === placeId)
-  );
+  // const { placeId } = route.params;
+  // const place = useSelector((state) =>
+  //   state.place.places.find((placeItem) => placeItem.id === 0)
+  // );
 
-  console.log(place)
 
   return (
     <ScrollView style={styles.container}>
