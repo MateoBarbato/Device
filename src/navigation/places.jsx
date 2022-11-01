@@ -25,7 +25,7 @@ const PlacesNavigator = () => {
         name="Places"
         component={PlaceListScreen}
         options={({ navigation }) => ({
-          title: "Direcciones",
+          title: "Dive Sites",
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate("NewPlace")}>
               <Ionicons name="add-circle-outline" size={24} color={colors.black} />
@@ -36,12 +36,12 @@ const PlacesNavigator = () => {
       <Stack.Screen
         name="PlaceDetail"
         component={PlaceDetailScreen}
-        options={{ title: "Detalles de la dirección" }}
+        options={{ title: "Detalles del Dive Site" }}
       />
       <Stack.Screen
         name="NewPlace"
         component={NewPlaceScreen}
-        options={{ title: "Nueva dirección" }}
+        options={{ title: "Nuevo Dive Site" }}
       />
       <Stack.Screen 
         name="Maps" 

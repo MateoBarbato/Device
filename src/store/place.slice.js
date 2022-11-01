@@ -46,7 +46,7 @@ export const savePlace = (title, image, coords) => {
     try {
       const result = await insertPlace(title,image,address,coords)
 
-      dispatch(addPlace({id:result.insertId,title, image, address, coords}));
+      dispatch(addPlace({id:result.insertId,title:title, image:image, address:address, coords:coords}));
     } catch (err) {
       console.log(err);
       throw err;

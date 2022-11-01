@@ -10,8 +10,10 @@ const PlaceList = ({ navigation }) => {
   const dispatch = useDispatch();
   const places = useSelector((state) => state.place.places);
 
+
   useEffect(()=>{
     dispatch(loadPlaces)
+
   },[dispatch])
 
   const renderItem = ({ item }) => (

@@ -21,6 +21,7 @@ const NewPlace = ({ navigation, route}) => {
 
   const onHandleSubmit = () => {
     dispatch(savePlace(title, image, location));
+   
     navigation.goBack();
   };
 
