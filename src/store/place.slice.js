@@ -62,7 +62,7 @@ export const loadPlaces = () => {
   return async (dispatch) => {
     try {
       const result = await getPlaces();
-      dispatch(setPlaces(result?.rows?._array));
+      dispatch(setPlaces(result.rows._array));
     } catch (err) {
       throw err;
     }
