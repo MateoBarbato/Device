@@ -14,8 +14,6 @@
     "format": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
-    "@react-native-firebase/app": "^16.4.3",
-    "@react-native-firebase/firestore": "^16.4.3",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/native-stack": "^6.8.0",

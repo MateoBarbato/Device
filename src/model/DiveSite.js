@@ -1,5 +1,5 @@
 class Site {
-    constructor(id,title,address,location,description,depth,difficulty){
+    constructor(id,title,location,description,depth,difficulty){
         this.id= id.toString();
         this.title= title;
         this.location=location;

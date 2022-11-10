@@ -3,12 +3,12 @@ import { View, Text, ScrollView, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
 
 import {LocationSelector } from "../../components";
-import {saveSite } from "../../store/diveSite.slice";
+import {saveSite} from "../../store/diveSite.slice";
 import colors from "../../utils/colors";
 import { styles } from "./styles";
 
 
-const NewDiveSite = ({ navigation, route}) => {
+const NewDiveSite = ({ navigation}) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description,setDescription] = useState("")
@@ -28,8 +28,7 @@ const NewDiveSite = ({ navigation, route}) => {
 
   const onHandleSubmit = () => {
     dispatch(saveSite(title,description,location,depth,difficulty))
-   
-    navigation.goBack();
+    // navigation.goBack();
   };
 
   const onHandlerLocation = (location) => {
