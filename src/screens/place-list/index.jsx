@@ -9,7 +9,7 @@ import { styles } from "./styles";
 const PlaceList = ({ navigation }) => {
   const dispatch = useDispatch();
   const places = useSelector((state) => state.place.places);
-
+  console.log(places)
 
   useEffect(()=>{
     dispatch(loadPlaces)
@@ -19,7 +19,7 @@ const PlaceList = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <PlaceItem
       {...item}
-      onSelect={() => navigation.navigate("PlaceDetail", { placeId: item.id })}
+      onSelect={() => navigation.navigate("Log Detail", { placeId: item.id })}
     />
   );
 

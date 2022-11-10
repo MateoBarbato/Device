@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 const DiveSitesNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="DiveSites"
+      initialRouteName="Catalog"
       screenOptions={{
         headerStyle: {
           backgroundColor: Platform.OS === "android" ? colors.primary : colors.secondary,
@@ -39,7 +39,7 @@ const DiveSitesNavigator = () => {
       <Stack.Screen
         name="New Dive Site"
         component={NewDiveSite}
-        options={{ title: "Detalles del Dive Site" }}
+        options={{ title: "List a new Dive Site" }}
       />
      
     </Stack.Navigator>

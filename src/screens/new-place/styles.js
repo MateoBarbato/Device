@@ -19,5 +19,17 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginBottom: 20,
     padding: 5,
+    
   },
-});
+  description:{
+    flex:1,
+    borderColor: colors.primary,
+    borderWidth: 1,
+    marginVertical:20,
+    padding: 10,
+    textAlignVertical:'top',
+    height:200,
+    fontSize:15,
+    borderRadius:5,
+  }
+})

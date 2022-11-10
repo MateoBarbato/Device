@@ -19,7 +19,8 @@ const placeSlice = createSlice({
         action.payload.title,
         action.payload.image,
         action.payload.address,
-        action.payload.coords
+        action.payload.coords,
+        action.payload.description
       );
       state.places.push(newPlace);
     },
@@ -31,7 +32,7 @@ const placeSlice = createSlice({
 
 export const { addPlace, setPlaces } = placeSlice.actions;
 
-export const savePlace = (title, image, coords) => {
+export const savePlace = (title, image, coords, description) => {
   return async (dispatch) => {
     const response = await fetch(URL_GEOCODING(coords?.lat, coords?.lng));
 
@@ -49,8 +50,8 @@ export const savePlace = (title, image, coords) => {
       //   from: image,
       //   to: path,
       // });
-      const result = await insertPlace(title, image, address, coords);
-      dispatch(addPlace({ id: result.insertId, title, image, address, coords }));
+      const result = await insertPlace(title, image, address, coords, description);
+      dispatch(addPlace({ id: result.insertId, title, image, address, coords, description}));
     } catch (err) {
       console.log(err);
       throw err;

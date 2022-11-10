@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 const PlacesNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Place"
+      initialRouteName="Log"
       screenOptions={{
         headerStyle: {
           backgroundColor: Platform.OS === "android" ? colors.primary : colors.secondary,
@@ -22,10 +22,10 @@ const PlacesNavigator = () => {
         },
       }}>
       <Stack.Screen
-        name="Places"
+        name="LogBook"
         component={PlaceListScreen}
         options={({ navigation }) => ({
-          title: "Dive Sites",
+          title: "LogBook",
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate("NewPlace")}>
               <Ionicons name="add-circle-outline" size={24} color={colors.black} />
@@ -34,19 +34,19 @@ const PlacesNavigator = () => {
         })}
       />
       <Stack.Screen
-        name="PlaceDetail"
+        name="Log Detail"
         component={PlaceDetailScreen}
-        options={{ title: "Detalles del Dive Site" }}
+        options={{ title: "Logged dive details" }}
       />
       <Stack.Screen
         name="NewPlace"
         component={NewPlaceScreen}
-        options={{ title: "Nuevo Dive Site" }}
+        options={{ title: "Log New Dive" }}
       />
       <Stack.Screen 
         name="Maps" 
         component={MapsScreen} 
-        options={{ title: "Mapa" }} />
+        options={{ title: "Map" }} />
 
     </Stack.Navigator>
   );

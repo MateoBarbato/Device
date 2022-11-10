@@ -5,21 +5,55 @@ import colors from "../../utils/colors";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.white,
+    minHeight:500,
+  }, 
+  containerImg:{
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    paddingVertical:5,
+
+  },
+  containerDesc:{
+    borderRadius: 10,
+    padding:10,
+    paddingVertical:25,
+  },
+  description:{
+    borderColor:colors.secondary,
+    borderWidth:1,
+    borderRadius:5,
+    minHeight:250,
+    padding:15,
+    marginTop:10,
+  },
+  titleContainer:{
+    width:'50%',
+  },
+  title:{
+    color:colors.black,
+    fontSize:20,
+  },
+  titleBanner:{
+    color:colors.black,
+    fontWeight:'bold',
+    fontSize:30,
+    textAlign:'center',
   },
   image: {
-    height: "45%",
-    width: "100%",
-    minHeight: 300,
+    height: 150,
+    width: 150,
+    borderRadius:45,
+    marginLeft:10,
+    marginTop:10
   },
   content: {
-    width: "100%",
-    backgroundColor: colors.white,
-    shadowOpacity: 0.26,
-    shadowColor: colors.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    elevation: 5,
-    borderRadius: 10,
+    flex:1,
+    flexDirection:'column',
+    minHeight:700,
+    justifyContent:'center',
   },
   addressContainer: {
     padding: 15,
@@ -29,6 +63,8 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   map: {
-    height: 300,
+    height:250,
+    width:'100%',
+    marginBottom:20,
   },
 });

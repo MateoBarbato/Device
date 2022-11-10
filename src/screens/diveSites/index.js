@@ -1,32 +1,38 @@
 import React from "react";
-import { View,Text,TouchableOpacity } from "react-native";
+import { useEffect } from "react";
+import { View,Text, FlatList } from "react-native";
+import DiveSiteItem from "../../components/diveSite-item";
 import { styles } from "./styles";
+import { useSelector } from "react-redux";
 
 const DiveSite = () => {
-
-    const profundidad = '6m / 40m'
-    const nivel = 'Easy / Medium'
-    const title = 'La Palapa'
-    const description = 'Bahia, tortugas, estructura metalica, peces globo, stingray'
+    const sites = useSelector((state) => state.sites.sites)
+    console.log(sites)
 
     const onSelect = () => {
         console.log('hi')
     }
+    const ListEmptyComponent = () => (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.empty}>No places yet</Text>
+        </View>
+      );
+    const renderItem = ({ item }) => (
+        <DiveSiteItem
+          {...item}
+          onSelect={console.log('hi')}
+        />
+      );
+
+      
 
     return(
-        <View style={styles.containerOrganicer}>
-            <TouchableOpacity onPress={onSelect} style={styles.container}>
-                <View style={styles.info}>
-                    <Text style={styles.title}>{title}</Text>
-                    <Text style={styles.description}>{description}</Text>
-                </View>
-                <View style={styles.data}>
-                    <Text>Profundidades: {profundidad}</Text>
-                    <Text>Nivel: {nivel}</Text>
-                </View>
-            </TouchableOpacity>
-            
-        </View>
+            <FlatList 
+            data={sites}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            ListEmptyComponent={ListEmptyComponent}
+            />
     )
 }
 

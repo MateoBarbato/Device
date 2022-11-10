@@ -10,17 +10,23 @@ import { styles } from "./styles";
 const NewPlace = ({ navigation, route}) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
+  const [description,setDescription] = useState("")
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
 
 
 
-  const onHandleChange = (text) => {
+  const onHandleChangeText = (text) => {
     setTitle(text);
+  };
+  
+  
+  const onHandleChangeDesc = (text) => {
+    setDescription(text);
   };
 
   const onHandleSubmit = () => {
-    dispatch(savePlace(title, image, location));
+    dispatch(savePlace(title, image, location, description));
    
     navigation.goBack();
   };
@@ -40,11 +46,19 @@ const NewPlace = ({ navigation, route}) => {
         <TextInput
           style={styles.input}
           placeholder="new location"
-          onChangeText={onHandleChange}
+          onChangeText={onHandleChangeText}
           value={title}
         />
         <ImageSelector onImage={onHandlerImage} />
         <LocationSelector onLocation={onHandlerLocation} />
+        <TextInput
+          style={styles.description}
+          placeholder="Fill a description about the dive and conditions..."
+          onChangeText={onHandleChangeDesc}
+          value={description}
+          multiline={true}
+          numberOfLines={6}
+        />
         <Button title="Save Place" onPress={onHandleSubmit} color={colors.primary} />
       </View>
     </ScrollView>

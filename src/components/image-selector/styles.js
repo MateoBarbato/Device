@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: colors.primary,
     borderWidth: 1,
+    borderRadius:5,
   },
   image: {
     width: "100%",

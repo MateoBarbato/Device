@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons';
 import  colors  from '../utils/colors'
 import PlacesNavigator from './places'
-import DiveSite from '../screens/diveSites';
 import DiveSitesNavigator from './diveSites';
 
 const BottomTap = createBottomTabNavigator();
@@ -12,7 +11,7 @@ const BottomTap = createBottomTabNavigator();
 const TabsNavigator = () => {
     return (
         <BottomTap.Navigator
-            initialRouteName='Dive Sites'
+            initialRouteName='Log Book'
             screenOptions={{
                 headerShown: false,
                 tabBarLabelStyle: {
@@ -22,10 +21,10 @@ const TabsNavigator = () => {
             }}
         >
             <BottomTap.Screen
-                name='Dive Sites'
+                name='Log Book'
                 component={PlacesNavigator}
                 options={{
-                    title:'Dive Sites',
+                    title:'Log Book',
                     tabBarIcon:({focused}) => (
                         <Ionicons 
                         name={focused ? 'home' : "home-outline" }
@@ -35,10 +34,10 @@ const TabsNavigator = () => {
                 }}
             />
             <BottomTap.Screen
-                name='Detail'
+                name='Catalog'
                 component={DiveSitesNavigator}
                 options={{
-                    title:'Detail',
+                    title:'Dive Sites',
                     tabBarIcon:({focused}) => (
                         <Ionicons 
                             name={focused ? 'file-tray-full' : 'file-tray-full-outline'}
