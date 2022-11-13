@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, TextInput, Button } from "react-native";
-import { useDispatch } from "react-redux";
-import {saveSite} from "../../store/diveSite.slice";
 import colors from "../../utils/colors";
 import { styles } from "./styles";
 import {app} from '../../firebase/config'
-import { doc, setDoc } from "firebase/firestore"; 
 import { getFirestore } from 'firebase/firestore'
 import { collection, addDoc } from "firebase/firestore"; 
 import uuid from 'react-native-uuid';
-
-// Add a new document with a generated id.
-
-// Add a new document in collection "cities"
 
 
 
@@ -42,7 +35,6 @@ const NewDiveSite = ({ navigation}) => {
   };
 
   const onHandleSubmit = () => {
-      console.log('asd')
       setSite({
         id:uuid.v4(),
         title,
@@ -51,7 +43,6 @@ const NewDiveSite = ({ navigation}) => {
         difficulty
 
       })
-    // dispatch(saveSite(title,description,depth,difficulty));
     navigation.goBack();
   };
 

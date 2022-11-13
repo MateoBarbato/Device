@@ -4,10 +4,10 @@
     "slug": "DeviceProyect",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/scuba.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/scuba.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,16 +22,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/scubaColored.png",
         "backgroundColor": "#FFFFFF"
       },
-      
-        "package": "com.web.app",
-        "versionCode": 1
-      
+      "package": "com.web.app",
+      "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/scuba.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "75909768-15ce-44f1-80a8-83dfeb184889"
+      }
     }
   }
 }
