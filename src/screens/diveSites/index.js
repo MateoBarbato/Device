@@ -37,7 +37,6 @@ const DiveSite = () => {
     const renderItem = ({ item }) => (
         <DiveSiteItem
           {...item}
-          onSelect={onSelect}
         />
       );
 
