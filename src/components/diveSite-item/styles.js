@@ -11,12 +11,18 @@ export const styles = StyleSheet.create({
         alignItems:"flex-start",
         borderRadius:8,
         width:'96%',
-        marginHorizontal:'2%'
+        marginHorizontal:10,
+        marginVertical:15,
     },
-    description:{
+    text:{
+        fontSize:16,
         marginVertical:5,
+        fontWeight:'400',
     },
-    
+    title:{
+        fontSize:18,
+        fontWeight:"bold"
+    },
     info: {
         justifyContent: 'center',
     },
@@ -24,6 +30,7 @@ export const styles = StyleSheet.create({
         flex:1,
         width:'100%',
         marginVertical:10,
+        padding:10,
         alignItems:'center',
         flexDirection:'row',
         borderRadius:40,

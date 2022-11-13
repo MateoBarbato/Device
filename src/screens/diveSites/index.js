@@ -1,15 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View,Text, FlatList } from "react-native";
 import DiveSiteItem from "../../components/diveSite-item";
 import { styles } from "./styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getSites } from "../../store/diveSite.slice";
+import {app} from '../../firebase/config';
+// import { collection, getDocs,query } from "firebase/firestore"; 
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
+
 
 const DiveSite = () => {
-    const sites = useSelector((state) => state.sites.sites)
 
-  // useEffect(() => {
-  //   dispatch
-  // })
+    const [sites,setSites]= useState('');
+
+    const db = getFirestore(app);
+
+    async function getCities(db) {
+      const siteCol = collection(db, 'sites');
+      const siteSnapshot = await getDocs(siteCol);
+      const siteslist = siteSnapshot.docs.map(doc => doc.data());
+      setSites(siteslist)
+      // console.log("updated")
+    }
+
+    useEffect(() => {
+      getCities(db)
+      
+    },[sites]);
+ 
+
+
+    // const sites = useSelector((state) => state.sites.sites)
+    
+
+    const onSelect = () => {
+      console.log('hi')
+    }
 
     const ListEmptyComponent = () => (
         <View style={styles.emptyContainer}>
@@ -19,17 +46,15 @@ const DiveSite = () => {
     const renderItem = ({ item }) => (
         <DiveSiteItem
           {...item}
-          onSelect={console.log('hi')}
+          onSelect={onSelect}
         />
       );
-
-      
 
     return(
             <FlatList 
             data={sites}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.id}
             ListEmptyComponent={ListEmptyComponent}
             />
     )

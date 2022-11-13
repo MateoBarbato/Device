@@ -9,7 +9,7 @@ import { styles } from "./styles";
 const PlaceList = ({ navigation }) => {
   const dispatch = useDispatch();
   const places = useSelector((state) => state.place.places);
-  console.log(places)
+  
 
   useEffect(()=>{
     dispatch(loadPlaces)

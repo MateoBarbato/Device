@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, TextInput, Button } from "react-native";
+import { View, Text, ScrollView, TextInput, Button ,Keyboard,  TouchableWithoutFeedback } from "react-native";
 import { useDispatch } from "react-redux";
 
 import { ImageSelector,LocationSelector } from "../../components";
@@ -14,7 +14,11 @@ const NewPlace = ({ navigation, route}) => {
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
 
-
+  const DismissKeyboard = ({ children }) => (
+    <TouchableWithoutFeedback 
+    onPress={() => Keyboard.dismiss()}> {children}
+    </TouchableWithoutFeedback>
+    );
 
   const onHandleChangeText = (text) => {
     setTitle(text);
@@ -51,6 +55,7 @@ const NewPlace = ({ navigation, route}) => {
         />
         <ImageSelector onImage={onHandlerImage} />
         <LocationSelector onLocation={onHandlerLocation} />
+        <DismissKeyboard>
         <TextInput
           style={styles.description}
           placeholder="Fill a description about the dive and conditions..."
@@ -59,6 +64,7 @@ const NewPlace = ({ navigation, route}) => {
           multiline={true}
           numberOfLines={6}
         />
+        </DismissKeyboard>
         <Button title="Save Place" onPress={onHandleSubmit} color={colors.primary} />
       </View>
     </ScrollView>

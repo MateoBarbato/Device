@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, TextInput, Button } from "react-native";
 import { useDispatch } from "react-redux";
-
-import {LocationSelector } from "../../components";
 import {saveSite} from "../../store/diveSite.slice";
 import colors from "../../utils/colors";
 import { styles } from "./styles";
+import {app} from '../../firebase/config'
+import { doc, setDoc } from "firebase/firestore"; 
+import { getFirestore } from 'firebase/firestore'
+import { collection, addDoc } from "firebase/firestore"; 
+import uuid from 'react-native-uuid';
+
+// Add a new document with a generated id.
+
+// Add a new document in collection "cities"
+
 
 
 const NewDiveSite = ({ navigation}) => {
-  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description,setDescription] = useState("")
-  const [location, setLocation] = useState("");
   const [depth,setDepth]= useState('')
   const [difficulty,setDifficulty]= useState('')
 
+  const db = getFirestore(app);
+
+
+  async function setSite (data) {
+    const docRef = await addDoc(collection(db, "sites"), data);
+
+  }
+ 
+  
 
   const onHandleChangeText = (text) => {
     setTitle(text);
@@ -27,12 +42,17 @@ const NewDiveSite = ({ navigation}) => {
   };
 
   const onHandleSubmit = () => {
-    dispatch(saveSite(title,description,location,depth,difficulty))
-    // navigation.goBack();
-  };
+      console.log('asd')
+      setSite({
+        id:uuid.v4(),
+        title,
+        description,
+        depth,
+        difficulty
 
-  const onHandlerLocation = (location) => {
-    setLocation(location);
+      })
+    // dispatch(saveSite(title,description,depth,difficulty));
+    navigation.goBack();
   };
 
   const onHandleReferenceDepth = (text) => {
@@ -53,7 +73,6 @@ const NewDiveSite = ({ navigation}) => {
           onChangeText={onHandleChangeText}
           value={title}
         />
-        <LocationSelector onLocation={onHandlerLocation} />
         <TextInput
           style={styles.description}
           placeholder="Fill a description about the dive and conditions..."

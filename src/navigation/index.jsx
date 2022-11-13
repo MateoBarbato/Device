@@ -3,7 +3,7 @@ import React from "react";
 
 import TabsNavigator from "./tabs";
 
-export default () => (
+export default  () => (
   <NavigationContainer>
     
     <TabsNavigator/>
