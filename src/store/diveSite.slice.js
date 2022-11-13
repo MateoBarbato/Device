@@ -32,9 +32,6 @@ export const saveSite = (title,description,depth,difficulty) =>{
         if (!response.ok) throw new Error("Something went wrong!");
         const data =  response;
 
-        // if (!data.results) throw new Error("Something went wrong!");
-        // console.log('data',data)
-        // const address = data.results[0].formatted_address;
         try {
            
 

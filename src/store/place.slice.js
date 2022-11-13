@@ -43,13 +43,9 @@ export const savePlace = (title, image, coords, description) => {
     if (!data.results) throw new Error("Something went wrong!");
 
     const address = data.results[0].formatted_address;
-    // const fileName = image.split("/").pop();
-    // const path = FileSystem.documentDirectory + fileName;
+
     try {
-      // await FileSystem.moveAsync({
-      //   from: image,
-      //   to: path,
-      // });
+
       const result = await insertPlace(title, image, address, coords, description);
       dispatch(addPlace({ id: result.insertId, title, image, address, coords, description}));
     } catch (err) {

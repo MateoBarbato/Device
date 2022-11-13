@@ -21,7 +21,6 @@ const DiveSite = () => {
       const siteSnapshot = await getDocs(siteCol);
       const siteslist = siteSnapshot.docs.map(doc => doc.data());
       setSites(siteslist)
-      // console.log("updated")
     }
 
     useEffect(() => {
@@ -29,14 +28,6 @@ const DiveSite = () => {
       
     },[sites]);
  
-
-
-    // const sites = useSelector((state) => state.sites.sites)
-    
-
-    const onSelect = () => {
-      console.log('hi')
-    }
 
     const ListEmptyComponent = () => (
         <View style={styles.emptyContainer}>

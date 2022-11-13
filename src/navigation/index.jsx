@@ -5,7 +5,6 @@ import TabsNavigator from "./tabs";
 
 export default  () => (
   <NavigationContainer>
-    
     <TabsNavigator/>
   </NavigationContainer>
 );

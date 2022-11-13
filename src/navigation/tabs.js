@@ -15,7 +15,6 @@ const TabsNavigator = () => {
             screenOptions={{
                 headerShown: false,
                 tabBarLabelStyle: {
-                    // fontFamily:'Lato-Bold',
                     color:colors.black,
                 }
             }}
